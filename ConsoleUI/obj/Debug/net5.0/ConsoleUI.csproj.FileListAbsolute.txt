@@ -1,0 +1,16 @@
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\ConsoleUI\bin\Debug\net5.0\ConsoleUI.exe
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\ConsoleUI\bin\Debug\net5.0\ConsoleUI.deps.json
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\ConsoleUI\bin\Debug\net5.0\ConsoleUI.runtimeconfig.json
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\ConsoleUI\bin\Debug\net5.0\ConsoleUI.runtimeconfig.dev.json
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\ConsoleUI\bin\Debug\net5.0\ConsoleUI.dll
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\ConsoleUI\bin\Debug\net5.0\ConsoleUI.pdb
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\ConsoleUI\obj\Debug\net5.0\ConsoleUI.csproj.AssemblyReference.cache
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\ConsoleUI\obj\Debug\net5.0\ConsoleUI.GeneratedMSBuildEditorConfig.editorconfig
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\ConsoleUI\obj\Debug\net5.0\ConsoleUI.AssemblyInfoInputs.cache
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\ConsoleUI\obj\Debug\net5.0\ConsoleUI.AssemblyInfo.cs
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\ConsoleUI\obj\Debug\net5.0\ConsoleUI.csproj.CoreCompileInputs.cache
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\ConsoleUI\obj\Debug\net5.0\ConsoleUI.dll
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\ConsoleUI\obj\Debug\net5.0\refint\ConsoleUI.dll
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\ConsoleUI\obj\Debug\net5.0\ConsoleUI.pdb
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\ConsoleUI\obj\Debug\net5.0\ConsoleUI.genruntimeconfig.cache
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\ConsoleUI\obj\Debug\net5.0\ref\ConsoleUI.dll
