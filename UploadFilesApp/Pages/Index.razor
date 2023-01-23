@@ -1,0 +1,40 @@
+﻿@page "/"
+
+<PageTitle>Upload demo App</PageTitle>
+
+<h1>Upload demo</h1>
+
+<InputFile multiple OnChange="@LoadFiles"/>
+
+@if(errors.Count == 0)
+{
+    <h2>Errors</h2>
+    <ul class="text-danger">
+        @foreach(var error in errors)
+        {
+            <li>@error</li>
+        }
+    </ul>
+}
+
+@code{
+    private long maxFileSize = 1024*1024*3;
+    private int maxAllowedFiles = 3;
+    private List<string> errors = new();
+
+    private async Task LoadFiles(InputFileChangeEventArgs e)
+    {
+        errors.Clear();
+
+        if (e.FileCount > maxAllowedFiles)
+        {
+            errors.Add("Too many files"); 
+            return;
+        }
+
+        foreach(var file in e.GetMultipleFiles(maxAllowedFiles))
+        {
+            string newFileName = Path.ChangeExtension(Path.GetRandomFileName(), Path.GetExtension(file.Name));
+        }
+    }
+}
