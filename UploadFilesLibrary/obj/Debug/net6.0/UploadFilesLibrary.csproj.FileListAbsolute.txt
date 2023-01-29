@@ -1,0 +1,12 @@
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\UploadFilesLibrary\bin\Debug\net6.0\UploadFilesLibrary.deps.json
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\UploadFilesLibrary\bin\Debug\net6.0\UploadFilesLibrary.dll
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\UploadFilesLibrary\bin\Debug\net6.0\UploadFilesLibrary.pdb
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\UploadFilesLibrary\obj\Debug\net6.0\UploadFilesLibrary.csproj.AssemblyReference.cache
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\UploadFilesLibrary\obj\Debug\net6.0\UploadFilesLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\UploadFilesLibrary\obj\Debug\net6.0\UploadFilesLibrary.AssemblyInfoInputs.cache
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\UploadFilesLibrary\obj\Debug\net6.0\UploadFilesLibrary.AssemblyInfo.cs
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\UploadFilesLibrary\obj\Debug\net6.0\UploadFilesLibrary.csproj.CoreCompileInputs.cache
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\UploadFilesLibrary\obj\Debug\net6.0\UploadFilesLibrary.dll
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\UploadFilesLibrary\obj\Debug\net6.0\refint\UploadFilesLibrary.dll
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\UploadFilesLibrary\obj\Debug\net6.0\UploadFilesLibrary.pdb
+C:\source\CSsharpPackages\WorkingWithFileIOInCsharp\UploadFilesLibrary\obj\Debug\net6.0\ref\UploadFilesLibrary.dll

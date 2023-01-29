@@ -1,6 +1,8 @@
 ﻿@page "/"
+@using UploadFilesLibrary
 @using UploadFilesApp.Data
 @inject IConfiguration config
+@inject ISqlDataAccess sql
 
 <PageTitle>Upload demo App</PageTitle>
 
@@ -55,10 +57,16 @@ else if (nbFilesUploaded > 0)
 
     private async Task SubmitForm()
     {
+        errors.Clear();
+
         try
         {
             string relativePath = await CaptureFile();
             newCustomer.FileName = relativePath;
+            await sql.SaveData("dbo.sp_Customer_Insert", "Default", newCustomer);
+            newCustomer = new();
+            file = null;
+            errors.Clear();
         }
         catch (Exception ex)
         {
