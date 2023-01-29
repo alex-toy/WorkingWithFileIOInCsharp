@@ -31,13 +31,5 @@ Microsoft.Extensions.Configuration.Abstractions
 
 ## Displaying Files From SQL
 
-### Install Packages
-```
-Dapper
-Microsoft.Data.SqlClient
-Microsoft.Extensions.Configuration.Abstractions
-```
-<img src="/pictures/connection_string.png" title="connection string"  width="800">
+<img src="/pictures/profile.png" title="profile"  width="800">
 
-
-https://www.youtube.com/watch?v=pKehZTYB62Q
