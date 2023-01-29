@@ -29,4 +29,15 @@ Microsoft.Extensions.Configuration.Abstractions
 <img src="/pictures/create_db3.png" title="create database"  width="800">
 
 
+## Displaying Files From SQL
+
+### Install Packages
+```
+Dapper
+Microsoft.Data.SqlClient
+Microsoft.Extensions.Configuration.Abstractions
+```
+<img src="/pictures/connection_string.png" title="connection string"  width="800">
+
+
 https://www.youtube.com/watch?v=pKehZTYB62Q
