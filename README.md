@@ -9,9 +9,6 @@
 <img src="/pictures/upload2.png" title="upload"  width="800">
 <img src="/pictures/upload3.png" title="upload"  width="800">
 
+### Associating File Uploads with a Form 
 
-Upload files :
-https://www.youtube.com/watch?v=9H6hs61UK84
-
-
-
+<img src="/pictures/form.png" title="form"  width="800">

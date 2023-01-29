@@ -1,11 +1,30 @@
 ﻿@page "/"
+@using UploadFilesApp.Data
 @inject IConfiguration config
 
 <PageTitle>Upload demo App</PageTitle>
 
 <h1>Upload demo</h1>
 
-<InputFile multiple accept=".png,.jpg,.jpeg" OnChange="@LoadFiles"/>
+<EditForm Model="newCustomer" OnValidSubmit="@SubmitForm">
+    
+    <label for="firstName">First Name :</label>
+    <InputText id="firstName" class="form-control" @bind-Value="newCustomer.FirstName" />
+    
+    <div>
+        <label for="lastName">Last Name :</label>
+        <InputText id="lastName" class="form-control" @bind-Value="newCustomer.LastName" />
+    </div>
+    <div>
+        <label for="profilePicture">Profile picture :</label>
+        <InputFile id="profilePicture" class="form-control" accept=".png,.jpg,.jpeg" 
+            OnChange="@LoadFileProfile" 
+            @bind-Value="newCustomer.FileName" />
+    </div>
+    <button class="btn btn-primary mt-3" type="submit">Create Customer</button>
+</EditForm>
+
+@*<InputFile class="form-control" multiple accept=".png,.jpg,.jpeg" OnChange="@LoadFiles"/>*@
 
 @if(errors.Count > 0)
 {
@@ -31,19 +50,62 @@ else if (nbFilesUploaded > 0)
     private int maxAllowedFiles = 3;
     private List<string> errors = new();
     int nbFilesUploaded = 0;
+    private CustomerModel newCustomer = new();
+    private IBrowserFile? file;
 
-    private async Task LoadFiles(InputFileChangeEventArgs e)
+    private async Task SubmitForm()
+    {
+        try
+        {
+            string relativePath = await CaptureFile();
+            newCustomer.FileName = relativePath;
+        }
+        catch (Exception ex)
+        {
+            errors.Add(ex.Message);
+        }
+    }
+
+    private void LoadFileProfile(InputFileChangeEventArgs uploadEvent)
+    {
+        file = uploadEvent.File;
+    }
+
+    private async Task<string> CaptureFile()
+    {
+        string relativePath;
+        if (file is null)
+        {
+            return "";
+        }
+
+        try
+        {
+            relativePath = await LoadFileThrow(file);
+            nbFilesUploaded++;
+        }
+        catch (Exception ex)
+        {
+            errors.Add($"{file.Name} -> {ex.Message}");
+            throw;
+        }
+
+        return relativePath;
+    }
+
+    private async Task LoadFiles(InputFileChangeEventArgs uploadEvent)
     {
         errors.Clear();
         nbFilesUploaded = 0;
 
-        if (e.FileCount > maxAllowedFiles)
+        if (uploadEvent.FileCount > maxAllowedFiles)
         {
             errors.Add("Too many files"); 
             return;
         }
 
-        foreach(IBrowserFile file in e.GetMultipleFiles(maxAllowedFiles))
+        IReadOnlyList<IBrowserFile> files = uploadEvent.GetMultipleFiles(maxAllowedFiles);
+        foreach(IBrowserFile file in files)
         {
             try
             {
@@ -57,7 +119,7 @@ else if (nbFilesUploaded > 0)
         }
     }
 
-    private async Task LoadFileThrow(IBrowserFile file)
+    private async Task<string> LoadFileThrow(IBrowserFile file)
     {
         string randomFileName = Path.GetRandomFileName();
         string fileExtension = Path.GetExtension(file.Name);
@@ -65,6 +127,7 @@ else if (nbFilesUploaded > 0)
 
         string fileStoragePath = config.GetValue<string>("FileStorage")!;
         string suffix = "alexei";
+        string relativePath = Path.Combine(suffix, newFileName);
         string path = Path.Combine(fileStoragePath, suffix, newFileName);
 
         string directoryPath = Path.Combine(fileStoragePath, suffix);
@@ -72,5 +135,6 @@ else if (nbFilesUploaded > 0)
 
         await using FileStream fs = new(path, FileMode.Create);
         await file.OpenReadStream(maxFileSize).CopyToAsync(fs);
+        return relativePath;
     }
 }
