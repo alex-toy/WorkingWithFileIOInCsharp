@@ -1,12 +1,13 @@
 ﻿@page "/"
+@inject IConfiguration config
 
 <PageTitle>Upload demo App</PageTitle>
 
 <h1>Upload demo</h1>
 
-<InputFile multiple OnChange="@LoadFiles"/>
+<InputFile multiple accept=".png,.jpg,.jpeg" OnChange="@LoadFiles"/>
 
-@if(errors.Count == 0)
+@if(errors.Count > 0)
 {
     <h2>Errors</h2>
     <ul class="text-danger">
@@ -15,16 +16,26 @@
             <li>@error</li>
         }
     </ul>
+} 
+else if (nbFilesUploaded > 1)
+{
+    <h2>Files uploaded successfully</h2>
+} 
+else if (nbFilesUploaded > 0)
+{
+    <h2>File uploaded successfully</h2>
 }
 
 @code{
     private long maxFileSize = 1024*1024*3;
     private int maxAllowedFiles = 3;
     private List<string> errors = new();
+    int nbFilesUploaded = 0;
 
     private async Task LoadFiles(InputFileChangeEventArgs e)
     {
         errors.Clear();
+        nbFilesUploaded = 0;
 
         if (e.FileCount > maxAllowedFiles)
         {
@@ -32,9 +43,34 @@
             return;
         }
 
-        foreach(var file in e.GetMultipleFiles(maxAllowedFiles))
+        foreach(IBrowserFile file in e.GetMultipleFiles(maxAllowedFiles))
         {
-            string newFileName = Path.ChangeExtension(Path.GetRandomFileName(), Path.GetExtension(file.Name));
+            try
+            {
+                await LoadFileThrow(file);
+                nbFilesUploaded++;
+            }
+            catch (Exception ex)
+            {
+                errors.Add($"{file.Name} -> {ex.Message}");
+            }
         }
+    }
+
+    private async Task LoadFileThrow(IBrowserFile file)
+    {
+        string randomFileName = Path.GetRandomFileName();
+        string fileExtension = Path.GetExtension(file.Name);
+        string newFileName = Path.ChangeExtension(randomFileName, fileExtension);
+
+        string fileStoragePath = config.GetValue<string>("FileStorage")!;
+        string suffix = "alexei";
+        string path = Path.Combine(fileStoragePath, suffix, newFileName);
+
+        string directoryPath = Path.Combine(fileStoragePath, suffix);
+        Directory.CreateDirectory(directoryPath);
+
+        await using FileStream fs = new(path, FileMode.Create);
+        await file.OpenReadStream(maxFileSize).CopyToAsync(fs);
     }
 }
